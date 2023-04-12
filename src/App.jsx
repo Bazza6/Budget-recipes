@@ -1,34 +1,35 @@
 import axios from "axios";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Routes } from "react-router";
 import { useEffect, useState } from "react";
-import Card from "./components/card";
+import RecipesList from "./components/RecipesList";
+import RecipeDetails from "./components/RecipeDetails";
+import RecipeContext from "./context/RecipeContext";
+// import mock from "../fakeRecepies.json";
+export const URL = "https://api.spoonacular.com/recipes/random?number=9";
 
-const URL = "https://api.spoonacular.com/recipes/complexSearch";
 export default function App() {
+  // const [recetas, setRecetas] = useState(mock); Use to make test with mocked data
   const [recetas, setRecetas] = useState([]);
-
   useEffect(() => {
     axios
-      .get(
-        `https://api.spoonacular.com/recipes/random?number=3&tags=vegetarian,dessert&apiKey=${
-          import.meta.env.VITE_API_KEY
-        }`
-      )
+      .get(`${URL}&apiKey=${import.meta.env.VITE_API_KEY}`)
       .then((res) => setRecetas(res.data.recipes));
   }, []);
 
-  console.log(recetas);
+  const contextValue = {
+    recetas,
+    setRecetas,
+  };
+
   return (
-    <>
-      <h1 className="font-black text-6xl">RECETAS</h1>
-      <main className="recetas">
-        <ul>
-          {recetas.map((r) => (
-            <li key={r.id}>
-              <Card receta={r} />
-            </li>
-          ))}
-        </ul>
-      </main>
-    </>
+    <RecipeContext.Provider value={contextValue}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<RecipesList />} />
+          <Route path="/recipe/:id" element={<RecipeDetails />} />
+        </Routes>
+      </Router>
+    </RecipeContext.Provider>
   );
 }
