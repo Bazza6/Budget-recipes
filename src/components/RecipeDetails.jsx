@@ -19,9 +19,9 @@ export default function RecipeDetails() {
   }
 
   return (
-    <div className="place-content-end ">
+    <div className="m-4">
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full mt-8"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full"
         onClick={() => navigate(-1)}
       >
         <svg
@@ -39,12 +39,19 @@ export default function RecipeDetails() {
           />
         </svg>
       </button>
-      <div className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-full  mt-8">
-        <img
-          className="object-contain h-full rounded-t-lg max-h-96 md:h-full md:rounded-none md:rounded-l-lg"
-          src={recipe.image}
-          alt={recipe.title}
-        />
+      <div
+        className="grid grid-cols-1 items-center bg-white border border-gray-200 rounded-lg  shadow-lg
+      md:grid-cols-2 md:max-w-full mt-8"
+      >
+        <div className=" md:h-full w-full">
+          <img
+            className="object-cover w-full md:h-full md:w-auto rounded-t-lg
+            md:rounded-none md:rounded-l-lg"
+            src={recipe.image}
+            alt={recipe.title}
+          />
+        </div>
+
         <div className="flex flex-col justify-between p-4 leading-normal">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
             {recipe.title}

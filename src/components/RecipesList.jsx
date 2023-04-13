@@ -22,7 +22,7 @@ export default function RecipesList() {
   return (
     <main className="recetas m-4">
       <div className="h-48 bg-indigo-300 flex flex-col items-center justify-center my-8 rounded-lg">
-        <h2 className="mb-2 text-6xl font-bold tracking-tight text-gray-900">
+        <h2 className="mb-2 text-6xl italic font-bold tracking-tight text-gray-900">
           ON A BUDGET?
         </h2>
         <label htmlFor="slider">Filter by price per portion!</label>
