@@ -1,8 +1,8 @@
-import RecipeContext from "../context/RecipeContext";
-import Card from "./Card";
 import { useContext, useState } from "react";
 import axios from "axios";
 import { URL } from "../App";
+import RecipeContext from "../context/RecipeContext";
+import Card from "./Card";
 
 export default function RecipesList() {
   const { recetas, setRecetas } = useContext(RecipeContext);
@@ -22,7 +22,7 @@ export default function RecipesList() {
   return (
     <main className="recetas m-4">
       <div className="h-48 bg-indigo-300 flex flex-col items-center justify-center my-8 rounded-lg">
-        <h2 className="mb-2 text-6xl italic font-bold tracking-tight text-gray-900">
+        <h2 className="mb-2 text-4xl italic font-bold tracking-tight text-gray-900 sm:text-6xl">
           ON A BUDGET?
         </h2>
         <label htmlFor="slider">Filter by price per portion!</label>

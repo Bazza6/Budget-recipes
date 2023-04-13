@@ -1,12 +1,12 @@
 import { useContext, useEffect } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import RecipeContext from "../context/RecipeContext";
 
 export default function RecipeDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { recetas } = useContext(RecipeContext);
-  const recipe = recetas.find((r) => r.id === parseInt(id));
+  const recipe = recetas.find((receta) => receta.id === parseInt(id));
 
   useEffect(() => {
     if (!recipe) {
@@ -53,12 +53,12 @@ export default function RecipeDetails() {
         </div>
 
         <div className="flex flex-col justify-between p-4 leading-normal">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+          <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900">
             {recipe.title}
           </h5>
           <div>
-            <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-600 mt-4">
-              Ingridients:
+            <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-600 mt-4 italic">
+              Ingredients:
             </h5>
             <div className="columns-3">
               {recipe.extendedIngredients.map((i) => (
@@ -71,7 +71,7 @@ export default function RecipeDetails() {
             </div>
           </div>
           <div>
-            <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-600 mt-4">
+            <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-600 mt-4 italic">
               Recipe:
             </h5>
             <div
