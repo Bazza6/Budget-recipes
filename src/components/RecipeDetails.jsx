@@ -60,7 +60,7 @@ export default function RecipeDetails() {
             <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-600 mt-4 italic">
               Ingredients:
             </h5>
-            <div className="columns-3">
+            <div className="columns-2">
               {recipe.extendedIngredients.map((i) => (
                 <div key={i.id}>
                   <span className="mb-3 font-normal text-gray-600 bg-slate-300  px-4 rounded-lg">
